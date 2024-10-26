@@ -59,18 +59,135 @@
 
     <!-- Sezione Main in cui sono presenti il Titolo della pagina, il Sottotitolo, il Form, il Prezzo Finale e i Nostri contatti-->
     <main>
-        <!-- Titolo -->
-        <!-- Sottotitoli -->
-        <!-- Form -->
-        <!-- Prezzo finale -->
-        <!-- I nostri contatti -->
+
+        <div class="container my-4">
+            <div class="row">
+
+                <!-- Responsive Mobile First: 12 colonne su schermi piccoli e 9 colonne su schermi grandi -->
+                <section class="col-12 col-lg-9">
+                    <!-- Titolo -->
+                    <h1>Richiesta Preventivo</h1>
+                    <!-- /Titolo -->
+
+                    <!-- Sottotitolo -->
+                    <p>Compila il form per richiedere un preventivo per i nostri servizi di sviluppo.</p>
+                    <!-- /Sottotitolo -->
+
+                    <!-- Form: modulo di richiesta di preventivo -->
+                    <form action="#">
+
+                        <!-- Input: Nome, Cognome ed Email utente -->
+                        <div class="mb-3">
+                            <label for="user-name" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="user-name" minlength="2" maxlength="50"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="user-last-name" class="form-label">Cognome</label>
+                            <input type="text" class="form-control" id="user-last-name" minlength="2" maxlength="50"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="user-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="user-email" minlength="5" maxlength="50"
+                                required>
+                        </div>
+                        <!-- /Nome, Cognome ed Email utente -->
+
+                        <!-- Select: Tipi di lavoro che è possibile commissionare obbligatoriamente -->
+                        <div class="mb-3">
+                            <label for="job-request" class="form-label">Tipo di Lavoro</label>
+                            <select class="form-select" aria-label="job-request" required>
+                                <option value="" disabled selected>Seleziona il tipo di lavoro</option>
+                                <option value="backed-development,">Backed Development</option>
+                                <option value="frontend-development">Frontend Development</option>
+                                <option value="project-analysis">Project Analysis</option>
+                            </select>
+                        </div>
+                        <!-- /Select: Tipi di lavoro che è possibile commissionare obbligatoriamente-->
+
+                        <!-- Text area: per ulteriori commenti da parte dell'utente, non obbigatorio-->
+                        <div class="mb-3">
+                            <label for="form-text-area" class="form-label">Textarea con Bootstrap 5</label>
+                            <textarea class="form-control" id="form-text-area" rows="3" minlength="10"
+                                maxlength="200"></textarea>
+                        </div>
+                        <!-- /Text area: per ulteriori commenti da parte dell'utente, non obbigatorio-->
+
+                        <!-- Input: Codice promozionale opzionale-->
+                        <div class="mb-3">
+                            <label for="user-promo-code" class="form-label">Codice Promozionale (opzionale)</label>
+                            <input type="text" class="form-control" id="user-promo-code">
+                        </div>
+                        <!-- /Input: Codice promozionale opzionale-->
+
+                        <!-- Checkbox: Utente deve accettare la privacy in modo obbligatorio-->
+                        <div class="form-check mb-5">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheck-Privacy" required>
+                            <label class="form-check-label" for="flexCheck-Privacy">
+                                Accetto la Privavy Policy
+                            </label>
+                        </div>
+                        <!-- /Checkbox: Utente deve accettare la privacy in modo obbligatorio-->
+
+                        <!-- Calcolo del prezzo finale del preventivo -->
+                        <section class="d-flex justify-content-around">
+                            <!-- Button submit -->
+                            <div class="mb-3 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">Calcola preventivo</button>
+                            </div>
+                            <!-- /Button submit -->
+
+                            <!-- Prezzo finale -->
+                            <div class="mb-5 text-center">
+                                <p><span class="fw-semibold">Prezzo finale</span><br><span class="fw-semibold fs-4">€
+                                        200</span>,00
+                                </p>
+                            </div>
+                            <!-- /Prezzo finale -->
+                        </section>
+                        <!-- Calcolo del prezzo finale del preventivo -->
+
+                    </form>
+                    <!-- /Form: modulo di richiesta di preventivo -->
+
+                </section>
+                <!-- /Responsive Mobile First: 12 colonne su schermi piccoli e 9 colonne su schermi grandi -->
+
+                <!-- I nostri contatti, Responsive Mobile: First 12 colonne su schermi piccoli e 3 colonne su schermi grandi -->
+                <section class="col-12 col-lg-3">
+                    <div class="card mx-auto mb-4" style="width: 18rem;">
+                        <div class="bg-dark-subtle rounded-top d-flex" style="width: 100%; height: 12rem;">
+                            <p class="fs-2 fw-medium text-white text-center m-auto" style="width: 100%;">
+                                300x200</p>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">I nostri contatti</h5>
+                            <p class="card-text">Se hai bisogno di aiuto puoi contattarci:</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">help@boolfactory.test</li>
+                            <li class="list-group-item">+1122334455</li>
+
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Help Desk</a>
+                        </div>
+                    </div>
+                </section>
+                <!-- /I nostri contatti, Responsive Mobile: First 12 colonne su schermi piccoli e 3 colonne su schermi grandi -->
+
+            </div>
+        </div>
     </main>
-    <!-- /Sezione Main in cui sono presenti il Titolo della pagina, il Sottotitolo e il Form e i Nostri contatti-->
+    <!-- /Sezione Main in cui sono presenti il Titolo della pagina, il Sottotitolo, il Form, il Prezzo Finale e i Nostri contatti-->
 
 
     <!-- Sezione Footer in cui è presente il copyright-->
     <footer>
-        <div class="fixed-bottom text-bg-dark p-2 text-center">
+        <div class="text-bg-dark p-2 text-center">
             <p>&copy 2024 - Tutti i diritti riservati</p>
         </div>
     </footer>
