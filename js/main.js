@@ -64,28 +64,34 @@ myForm.addEventListener('submit', function (event) {
     // Creata una variabile che cambia nel tempo, inizialmente è uguale al prezzo standard e poi può essere modificata con lo sconto
     let finalPrice = standardPrice
 
+
     //Verifico il codice promozionale se è valido, quindi se è incluso nell'arrey validPromoCodes
-    // Calcolo del preventivo con evenuale sconto se il codice è valido
-    // Se il codice non è valido: alert che avvisa l'utente.
-    if (validPromoCodes.includes(userPromoCode)) {
+    //se il codice inserito non è incluso nella lista allora invita utente a riprovare
+    if (userPromoCode && !validPromoCodes.includes(userPromoCode)) {
+        alert("Codice promozionale non valido. Per favore, riprova");
+        //Riporta il focus al campo di input del codice promozionale
+        userPromoCode.focus();
+        //interrompe il calcolo
+        return;
+
+        // se il codice è valido, applicare sconto del 25%  
+    } else if (validPromoCodes.includes(userPromoCode)) {
         finalPrice = standardPrice * (1 - discountRate);
         console.log(`Prezzo scontato del 25%: ${finalPrice}€`);
-    } else if (userPromoCode) {
-        alert("Codice promozionale non valido");
     }
+
 
     // Formattare il prezzo finale in modo leggibile con due decimali
     const formattedPrice = finalPrice.toFixed(2).replace(".", ",") + " €";
     // console.log(formattedPrice);
 
     // Aggiornare il prezzo finale nel DOM
-    const showPriceText = document.getElementById('final-price')
-    showPriceText.innerHTML = `€ ${formattedPrice}`
+    const resultPriceText = document.getElementById('final-price')
+    resultPriceText.innerHTML = `€ ${formattedPrice}`
 
     // Mostrarlo nel DOM 
-    const resultContainer = document.getElementById('result-container')
-
-    resultContainer.classList.remove('d-none');
+    const showResultContainer = document.getElementById('result-container')
+    showResultContainer.classList.remove('d-none');
 
     // Svuoltare i campi del form
     event.target.reset();
