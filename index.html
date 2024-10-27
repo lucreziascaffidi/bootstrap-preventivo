@@ -99,9 +99,9 @@
                         <!-- Select: Tipi di lavoro che è possibile commissionare obbligatoriamente -->
                         <div class="mb-3">
                             <label for="job-request" class="form-label">Tipo di Lavoro</label>
-                            <select class="form-select" aria-label="job-request" required>
+                            <select class="form-select" aria-label="job-request" id="job-request" required>
                                 <option value="" disabled selected>Seleziona il tipo di lavoro</option>
-                                <option value="backed-development,">Backed Development</option>
+                                <option value="backend-development">Backed Development</option>
                                 <option value="frontend-development">Frontend Development</option>
                                 <option value="project-analysis">Project Analysis</option>
                             </select>
@@ -141,10 +141,10 @@
                             <!-- /Button submit -->
 
                             <!-- Prezzo finale -->
-                            <div class="mb-5 text-center">
-                                <p><span class="fw-semibold">Prezzo finale</span><br><span class="fw-semibold fs-4">€
-                                        200</span>,00
-                                </p>
+                            <div class="mb-4 text-center d-none" id="result-container">
+                                <span class="fw-semibold">Prezzo finale</span><br>
+                                <span class="fw-semibold fs-4" id="final-price"></span>
+
                             </div>
                             <!-- /Prezzo finale -->
                         </section>
