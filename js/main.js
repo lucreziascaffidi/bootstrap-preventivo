@@ -27,6 +27,16 @@ const validPromoCodes = ["YHDNU32", "JANJC63", "PWKCN25", "SJDPO96", "POCIE24"];
 //     console.log(validPromoCodes[i]);
 // }
 
+// Accedere al camput di input del codice promozionale e alla sua lable
+const promoInput = document.getElementById('user-promo-code');
+const promoLable = document.getElementById('promo-lable');
+
+//Accedere al div che mostra il messaggio di errore quando viene inserito un codice promozionale non valido
+const invalidPromoCodeText = document.getElementById('invalid-promo-code-text');
+
+// Accedere al div che mostra il messaggio di codice promozionale valido 
+const validPromoCodeText = document.getElementById('valid-promo-code-text');
+
 // Variabile sconto (25%)
 const discountRate = 0.25;
 
@@ -50,7 +60,30 @@ function applyDiscount(price, promoCode) {
 function isValidPromoCode(promoCode) {
     const cleanedCode = promoCode.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
     return validPromoCodes.includes(cleanedCode);
+
 }
+
+// Funzione per mostrare un messaggio di validità del codice promozionale
+function showValidUserPromoCode() {
+    validPromoCodeText.classList.remove('d-none');
+    promoInput.classList.add('is-valid');
+    promoLable.classList.add('text-success');
+}
+
+//Funzione che mostra in rosso il campo input codice promozionale con messaggio di errore se non è valido
+function showInvalidUserPromoCode() {
+    invalidPromoCodeText.classList.remove('d-none');
+    promoInput.classList.add('is-invalid');
+    promoLable.classList.add('text-danger');
+}
+
+// Funzione che nasconde il messaggio di errore
+function clearInvalidUserPromoCodeError() {
+    invalidPromoCodeText.classList.add('d-none')
+    promoInput.classList.remove('is-invalid');
+    promoLable.classList.remove('text-danger');
+}
+
 
 // Funzione per mostrare il prezzo formattato
 function displayFinalPrice(price) {
@@ -103,9 +136,11 @@ myForm.addEventListener('submit', function (event) {
     const userPromoCode = document.getElementById('user-promo-code').value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
     console.log(`Codice Promozionale: ${userPromoCode}`);
 
+
     // Calcolato preventivo base
     let standardPrice = calculateStandardPrice(jobType);
     console.log(`Prezzo: ${standardPrice}€`);
+    clearInvalidUserPromoCodeError();
 
     // Creata una variabile che cambia nel tempo, inizialmente è uguale al prezzo standard e poi può essere modificata con lo sconto
     let finalPrice = standardPrice
@@ -113,22 +148,21 @@ myForm.addEventListener('submit', function (event) {
     //Verifico il codice promozionale se è valido, quindi se è incluso nell'arrey validPromoCodes
     //se il codice inserito non è incluso nella lista allora invita utente a riprovare
     if (userPromoCode && !isValidPromoCode(userPromoCode)) {
-        alert("Codice promozionale non valido. Per favore, riprova");
-        //Riporta il focus al campo di input del codice promozionale
-        userPromoCode.focus();
-        //interrompe il calcolo
-        return;
-
+        showInvalidUserPromoCode();
+        displayFinalPrice(finalPrice);
         // se il codice è valido, applicare sconto del 25%  
     } else {
         finalPrice = applyDiscount(standardPrice, userPromoCode);
+        showValidUserPromoCode();
     }
 
     // Mostra il prezzo finale
     displayFinalPrice(finalPrice);
 
-    // Resetta il form dopo il calcolo
-    resetForm(event.target);
+
+    // // Resetta il form dopo il calcolo
+    // resetForm(event.target);
+
 
 })
 

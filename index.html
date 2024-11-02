@@ -118,8 +118,15 @@
 
                         <!-- Input: Codice promozionale opzionale-->
                         <div class="mb-3">
-                            <label for="user-promo-code" class="form-label">Codice Promozionale (opzionale)</label>
+                            <label for="user-promo-code" class="form-label" id="promo-lable">Codice Promozionale
+                                (opzionale)</label>
                             <input type="text" class="form-control" id="user-promo-code">
+                            <div class="text-danger d-none" id="invalid-promo-code-text">Per favore, inserisci un codice
+                                promozionale valido.
+                            </div>
+                            <div class="text-success d-none" id="valid-promo-code-text">Il codice promozionale inserito
+                                è valido.</div>
+
                         </div>
                         <!-- /Input: Codice promozionale opzionale-->
 
@@ -160,6 +167,7 @@
                 <!-- I nostri contatti, Responsive Mobile: First 12 colonne su schermi piccoli e 3 colonne su schermi grandi -->
                 <section class="col-12 col-lg-3">
                     <div class="card mx-auto mb-4" style="width: 18rem;">
+                        <!-- Immagine che ho ricreato direttamente su html, ma il tag nel caso volessi inserire l'immagine sarebbe: img -->
                         <div class="bg-dark-subtle rounded-top d-flex" style="width: 100%; height: 12rem;">
                             <p class="fs-2 fw-medium text-white text-center m-auto" style="width: 100%;">
                                 300x200</p>
