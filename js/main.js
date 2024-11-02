@@ -1,9 +1,29 @@
 console.log('Sono connesso');
 
 
-//PRENDE IL FORM DALL'HTML
+//PRENDERE CAMPI HTML
+
+//Prende il Form
 const myForm = document.getElementById('my-form');
 //console.log(myForm);
+
+
+
+// Accedere al camput di input del codice promozionale e alla sua lable
+const promoInput = document.getElementById('user-promo-code');
+const promoLable = document.getElementById('promo-lable');
+
+//Accedere al div che mostra il messaggio di errore quando viene inserito un codice promozionale non valido
+const invalidPromoCodeText = document.getElementById('invalid-promo-code-text');
+
+// Accedere al div che mostra il messaggio di codice promozionale valido 
+const validPromoCodeText = document.getElementById('valid-promo-code-text');
+
+//Prede button reset
+const resetButton = document.getElementById('reset-button');
+
+//Prende container del prezzo finale
+const ResultContainer = document.getElementById('result-container');
 
 //VARIABILI
 // Variabile che contiene le 10h richieste dal testo della milestone
@@ -27,18 +47,13 @@ const validPromoCodes = ["YHDNU32", "JANJC63", "PWKCN25", "SJDPO96", "POCIE24"];
 //     console.log(validPromoCodes[i]);
 // }
 
-// Accedere al camput di input del codice promozionale e alla sua lable
-const promoInput = document.getElementById('user-promo-code');
-const promoLable = document.getElementById('promo-lable');
 
-//Accedere al div che mostra il messaggio di errore quando viene inserito un codice promozionale non valido
-const invalidPromoCodeText = document.getElementById('invalid-promo-code-text');
-
-// Accedere al div che mostra il messaggio di codice promozionale valido 
-const validPromoCodeText = document.getElementById('valid-promo-code-text');
 
 // Variabile sconto (25%)
 const discountRate = 0.25;
+
+
+
 
 
 //FUNZIONI
@@ -84,6 +99,12 @@ function clearInvalidUserPromoCodeError() {
     promoLable.classList.remove('text-danger');
 }
 
+function clearValidUserPromoCodeError() {
+    validPromoCodeText.classList.add('d-none');
+    promoInput.classList.remove('is-valid');
+    promoLable.classList.remove('text-success');
+}
+
 
 // Funzione per mostrare il prezzo formattato
 function displayFinalPrice(price) {
@@ -99,6 +120,9 @@ function displayFinalPrice(price) {
     // Rimuovere la classe d-none per rendere visibile il prezzo
     const showResultContainer = document.getElementById('result-container');
     showResultContainer.classList.remove('d-none');
+
+    // Mostra pulsante di reset
+    resetButton.classList.remove('d-none');
 
 }
 
@@ -134,7 +158,7 @@ myForm.addEventListener('submit', function (event) {
 
     // Accedere al codice promozionale inserito dall'utente in modo pulito
     const userPromoCode = document.getElementById('user-promo-code').value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
-    console.log(`Codice Promozionale: ${userPromoCode}`);
+    // console.log(`Codice Promozionale: ${userPromoCode}`);
 
 
     // Calcolato preventivo base
@@ -150,19 +174,39 @@ myForm.addEventListener('submit', function (event) {
     if (userPromoCode && !isValidPromoCode(userPromoCode)) {
         showInvalidUserPromoCode();
         displayFinalPrice(finalPrice);
+
         // se il codice è valido, applicare sconto del 25%  
-    } else {
+    } else if (userPromoCode && isValidPromoCode(userPromoCode)) {
         finalPrice = applyDiscount(standardPrice, userPromoCode);
         showValidUserPromoCode();
+        console.log(`Codice Promozionale: ${userPromoCode}`);
+        console.log(`Sconto Applicato: ${discountRate}`);
+        console.log(`Prezzo Finale: ${finalPrice}€`);
+
     }
 
-    // Mostra il prezzo finale
+    // // Mostra il prezzo finale
     displayFinalPrice(finalPrice);
 
 
-    // // Resetta il form dopo il calcolo
-    // resetForm(event.target);
+});
+
+
+//ADD EVENT LISTENER AL RESET DEL FORM
+resetButton.addEventListener('click', function () {
+
+    //Resetta il form
+    myForm.reset();
+
+    //Nasconde prezzo finale
+    ResultContainer.classList.add('d-none');
+
+    //Rimuovere classi di errore o validità dal codice promozionale
+    clearValidUserPromoCodeError();
+    clearInvalidUserPromoCodeError();
+
+    //Nascondi il pulsante di reset 
+    resetButton.classList.add('d-none');
 
 
 })
-
