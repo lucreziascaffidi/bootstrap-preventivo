@@ -136,37 +136,32 @@
                         <!-- /Checkbox: Utente deve accettare la privacy in modo obbligatorio-->
 
                         <!-- Calcolo del prezzo finale del preventivo -->
-                        <section class="d-flex justify-content-around">
-                            <!-- Button submit -->
-                            <div class="mb-3 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg">Calcola
-                                    preventivo</button>
+                        <!-- Button submit -->
+                        <div class="mb-4
+                         text-center col-12 col-lg-3">
+                            <button type="submit" class="btn btn-primary btn-lg">Calcola
+                                preventivo</button>
+                        </div>
+                        <!-- /Button submit -->
+
+                        <!-- Reset Button -->
+                        <section>
+                            <div class="mb-4 text-center col-12 col-lg-3">
+                                <button type="button" class="btn btn-secondary btn-lg d-none"
+                                    id="reset-button">Reset</button>
                             </div>
-                            <!-- /Button submit -->
-
-                            <!-- Reset Button -->
-                            <section>
-                                <div class="mb-3 text-center">
-                                    <button type="button" class="btn btn-secondary btn-lg d-none"
-                                        id="reset-button">Reset</button>
-                                </div>
-                            </section>
-                            <!-- /Reset Button -->
-
-                            <!-- Prezzo finale -->
-                            <div class="mb-4 text-center d-none" id="result-container">
-                                <span class="fw-semibold">Prezzo finale</span><br>
-                                <span class="fw-bold fs-3" id="final-price-units"></span><span class="fw-light fs-4"
-                                    id="final-price-decimals"></span>
-
-                            </div>
-                            <!-- /Prezzo finale -->
-
-
                         </section>
+                        <!-- /Reset Button -->
+
+                        <!-- Prezzo finale -->
+                        <div class="mb-5 text-center mb-3 d-none col-12 col-lg-3" id="result-container">
+                            <span class="fw-semibold">Prezzo finale</span><br>
+                            <span class="fw-bold fs-3" id="final-price-units"></span><span class="fw-light fs-4"
+                                id="final-price-decimals"></span>
+                        </div>
+                        <!-- /Prezzo finale -->
+
                         <!-- /Calcolo del prezzo finale del preventivo -->
-
-
                     </form>
                     <!-- /Form: modulo di richiesta di preventivo -->
 
