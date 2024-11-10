@@ -80,24 +80,27 @@
                         <div class="mb-3">
                             <label for="user-name" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="user-name" minlength="2" maxlength="50"
-                                required>
+                                pattern="^[a-zA-ZÀ-ÿ\s]+$" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="user-last-name" class="form-label">Cognome</label>
                             <input type="text" class="form-control" id="user-last-name" minlength="2" maxlength="50"
-                                required>
+                                pattern="^[a-zA-ZÀ-ÿ\s]+$" required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="user-email" class="form-label">Email</label>
+                            <label for="user-email" class="form-label" id="email-label">Email</label>
                             <input type="email" class="form-control" id="user-email" minlength="5" maxlength="50"
-                                required>
+                                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|org|net|edu|gov|io|co|me)" required>
+                            <div class="text-danger d-none" id="invalid-email-text">Per favore, inserisci una mail
+                                valida, per esempio: mario.rossi@example.com.
+                            </div>
                         </div>
                         <!-- /Nome, Cognome ed Email utente -->
 
                         <!-- Select: Tipi di lavoro che è possibile commissionare obbligatoriamente -->
-                        <div class="mb-3">
+                        <div class=" mb-3">
                             <label for="job-request" class="form-label">Tipo di Lavoro</label>
                             <select class="form-select" aria-label="job-request" id="job-request" required>
                             </select>
@@ -107,8 +110,8 @@
                         <!-- Text area: per ulteriori commenti da parte dell'utente, non obbigatorio-->
                         <div class="mb-3">
                             <label for="form-text-area" class="form-label">Textarea con Bootstrap 5</label>
-                            <textarea class="form-control" id="form-text-area" rows="3" minlength="10"
-                                maxlength="200"></textarea>
+                            <textarea class="form-control" id="form-text-area" rows="3" minlength="10" maxlength="200"
+                                pattern="^[a-zA-ZÀ-ÿ\s]+$"></textarea>
                         </div>
                         <!-- /Text area: per ulteriori commenti da parte dell'utente, non obbigatorio-->
 

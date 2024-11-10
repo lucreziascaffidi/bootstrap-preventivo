@@ -5,6 +5,13 @@ console.log('Sono connesso');
 // Accede al Form
 const myForm = document.getElementById('my-form');
 
+// Accede al campo di input email 
+const emailInput = document.getElementById('user-email');
+const emailLabel = document.getElementById('email-label');
+
+// Accede al div che mostra il messaggio di errore per una email non valida
+const emailInvalidText = document.getElementById('invalid-email-text')
+
 // Accede al camput di input del codice promozionale e alla sua label
 const promoInput = document.getElementById('user-promo-code');
 const promoLable = document.getElementById('promo-lable');
@@ -41,6 +48,26 @@ const discountRate = 0.25;
 
 
 //FUNZIONI
+
+// Valida l'email inserita dall'utente
+function validEmail(email) {
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // Regex per validare l'email
+    return emailPattern.test(email); // Restituisce true se l'email è valida, false altrimenti
+}
+
+// Mostra un messaggio di errore per email non valida (rosso)
+function showInvalidUserEmail() {
+    emailInvalidText.classList.remove('d-none');
+    emailInput.classList.add('is-invalid');
+    emailLabel.classList.add('text-danger');
+}
+
+// Nasconde il messaggio di errore per il codice promozionale non valido
+function clearInvalidUserEmail() {
+    emailInvalidText.classList.add('d-none')
+    emailInput.classList.remove('is-invalid');
+    emailLabel.classList.remove('text-danger');
+}
 
 // Genera dinamicamente le opzioni della select a partire dall'array di lavori
 function populateJobSelect() {
@@ -91,7 +118,7 @@ function applyDiscount(price, promoCode) {
 
 // Verifica se il codice promozionale inserito è valido
 function isValidPromoCode(promoCode) {
-    const cleanedCode = promoCode.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+    const cleanedCode = promoCode.trim().toUpperCase().replace(/[^a-zA-Z0-9]/g, '');
     return validPromoCodes.includes(cleanedCode); // Restituisce true se il codice è valido
 
 }
@@ -164,8 +191,17 @@ myForm.addEventListener('submit', function (event) {
     const userSurname = document.getElementById('user-last-name').value;
     console.log(`Cognome: ${userSurname}`);
 
-    const userEmail = document.getElementById('user-email').value;
-    console.log(`Email: ${userEmail}`);
+    // Accede all'input email
+    const userEmail = emailInput.value;
+
+    // Verifica se la mail è valida
+    if (validEmail(userEmail)) {
+        clearInvalidUserEmail(); // Nasconde il messaggio di errore se l'email è valida
+        console.log(`Email: ${userEmail}`);
+    } else {
+        showInvalidUserEmail(); // Mostra il messaggio di errore se l'email non è valida
+        return;
+    }
 
     const userTextArea = document.getElementById('form-text-area').value;
     console.log(`Text Area: ${userTextArea}`);
