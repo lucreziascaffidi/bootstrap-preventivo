@@ -230,6 +230,7 @@ myForm.addEventListener('submit', function (event) {
     } else if (userPromoCode && isValidPromoCode(userPromoCode)) {
         finalPrice = applyDiscount(standardPrice, userPromoCode);
         showValidUserPromoCode(); // Mostra il messaggio di validità codice
+        clearInvalidUserPromoCodeError(); // Nascone messaggio di invalidità codice
         console.log(`Codice Promozionale: ${userPromoCode}`);
         console.log(`Sconto Applicato: ${discountRate}`);
         console.log(`Prezzo Finale: ${finalPrice}€`);
