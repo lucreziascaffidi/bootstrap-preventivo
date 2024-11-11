@@ -62,7 +62,7 @@ function showInvalidUserEmail() {
     emailLabel.classList.add('text-danger');
 }
 
-// Nasconde il messaggio di errore per il codice promozionale non valido
+// Nasconde il messaggio di errore per email non valida
 function clearInvalidUserEmail() {
     emailInvalidText.classList.add('d-none')
     emailInput.classList.remove('is-invalid');
